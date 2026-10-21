@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Portal - Smart Campus Connect</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo" style="font-size: 1.15rem;">
+                    <span>🎓</span>
+                    <span>Smart Campus</span>
+                </a>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="admin-dashboard.html"><span class="icon">🏛️</span> Admin Control</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="events.html"><span class="icon">🎪</span> College Events</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="feedback.html"><span class="icon">💬</span> Feedback Portal</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="xml-exchange.html"><span class="icon">📄</span> XML Data Exchange</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="login.html"><span class="icon">🔄</span> Switch Account</a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="user-avatar js-user-initials" style="background: var(--warning-light); color: var(--warning);">RK</div>
+                    <div class="user-info">
+                        <div class="name js-user-name">Dr. Ramesh Kumar</div>
+                        <div class="role js-user-role">ADMINISTRATOR</div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-secondary btn-block js-logout-btn">Log Out</button>
+            </div>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+                    <h2>Central Administrative Portal</h2>
+                </div>
+                <div>
+                    <span class="badge badge-warning">System Administrator Access</span>
+                </div>
+            </header>
+
+            <main class="content-body">
+                
+                <!-- KPI Stat Cards -->
+                <div class="grid-4">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">👨‍🎓</div>
+                        <div class="stat-details">
+                            <div class="value" id="adminTotalStudents">4</div>
+                            <div class="label">Total Enrolled Students</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">👩‍🏫</div>
+                        <div class="stat-details">
+                            <div class="value" id="adminTotalFaculty">2</div>
+                            <div class="label">Faculty Members</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">📊</div>
+                        <div class="stat-details">
+                            <div class="value" id="adminAvgAttendance">87.5%</div>
+                            <div class="label">Campus Attendance Avg</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon red">💬</div>
+                        <div class="stat-details">
+                            <div class="value" id="adminPendingFeedback">1</div>
+                            <div class="label">Pending Grievances</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs for Admin Sections -->
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem;">
+                    <button class="btn btn-primary admin-tab-btn active" data-target="studentsSection">
+                        👨‍🎓 Manage Students
+                    </button>
+                    <button class="btn btn-secondary admin-tab-btn" data-target="facultySection">
+                        👩‍🏫 Manage Faculty
+                    </button>
+                    <button class="btn btn-secondary admin-tab-btn" data-target="announcementsSection">
+                        📢 Broadcast Circular
+                    </button>
+                    <button class="btn btn-secondary admin-tab-btn" data-target="feedbackSection">
+                        💬 Student Grievances
+                    </button>
+                </div>
+
+                <!-- SECTION 1: Students Management -->
+                <section id="studentsSection" class="card admin-tab-content animate-fade-in" style="margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <div>
+                            <span class="badge badge-info" style="margin-bottom: 0.25rem;">Unit 4 & 8: CRUD Operations</span>
+                            <h3 class="card-title">Student Records Directory</h3>
+                        </div>
+                        <button class="btn btn-primary" id="openAddStudentModalBtn">
+                            + Add New Student
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Roll Number</th>
+                                    <th>Student Name</th>
+                                    <th>College Email</th>
+                                    <th>Department</th>
+                                    <th>Semester</th>
+                                    <th>Academic CGPA</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminStudentsTableBody">
+                                <!-- Populated dynamically by admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: Faculty Management -->
+                <section id="facultySection" class="card admin-tab-content" style="display: none; margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Faculty Records Directory</h3>
+                        <button class="btn btn-primary" id="openAddFacultyModalBtn">
+                            + Add Faculty Member
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Faculty Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminFacultyTableBody">
+                                <!-- Populated dynamically by admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: Announcements Broadcaster -->
+                <section id="announcementsSection" class="card admin-tab-content" style="display: none; margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Publish Campus-Wide Circular</h3>
+                    </div>
+
+                    <form id="adminAnnouncementForm" style="max-width: 700px;">
+                        <div class="form-group">
+                            <label class="form-label" for="announceTitle">Circular Title *</label>
+                            <input type="text" id="announceTitle" class="form-input" placeholder="e.g. End Semester Practical Examination Guidelines" required>
+                        </div>
+
+                        <div class="grid-2" style="margin-bottom: 0;">
+                            <div class="form-group">
+                                <label class="form-label" for="announceRole">Target Audience</label>
+                                <select id="announceRole" class="form-select">
+                                    <option value="all">Everyone (All Students & Faculty)</option>
+                                    <option value="student">Students Only</option>
+                                    <option value="faculty">Faculty Members Only</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="announcePriority">Priority Level</label>
+                                <select id="announcePriority" class="form-select">
+                                    <option value="low">Standard / Low</option>
+                                    <option value="medium" selected>Important / Medium</option>
+                                    <option value="high">Urgent / High</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="announceContent">Announcement Content *</label>
+                            <textarea id="announceContent" class="form-textarea" rows="4" placeholder="Enter circular details, deadlines, and instructions..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            📢 Broadcast Notification
+                        </button>
+                    </form>
+                </section>
+
+                <!-- SECTION 4: Feedback Reviewer -->
+                <section id="feedbackSection" class="card admin-tab-content" style="display: none; margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Student Grievances & Suggestions</h3>
+                        <span class="badge badge-warning">Review & Resolve</span>
+                    </div>
+
+                    <div id="adminFeedbackContainer">
+                        <!-- Populated dynamically by admin.js -->
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Dialog: Add Student -->
+    <dialog id="addStudentModal" class="modal-dialog">
+        <div class="modal-header">
+            <h3>Add New Student Record</h3>
+            <button class="btn btn-sm btn-secondary" id="closeAddStudentModalBtn">✕</button>
+        </div>
+        <form id="addStudentForm" method="dialog">
+            <div class="modal-body">
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newStudName">Full Name *</label>
+                        <input type="text" id="newStudName" class="form-input" placeholder="e.g. Sneha Reddy" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newStudRoll">Roll Number *</label>
+                        <input type="text" id="newStudRoll" class="form-input" placeholder="e.g. CS2023-009" required>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newStudUsername">Username *</label>
+                        <input type="text" id="newStudUsername" class="form-input" placeholder="sneha_r9" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newStudEmail">Email *</label>
+                        <input type="email" id="newStudEmail" class="form-input" placeholder="sneha@smartcampus.edu" required>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newStudDept">Department</label>
+                        <select id="newStudDept" class="form-select">
+                            <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics & Communication">Electronics & Communication</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newStudSem">Semester</label>
+                        <select id="newStudSem" class="form-select">
+                            <option value="1">Sem 1</option>
+                            <option value="2">Sem 2</option>
+                            <option value="3">Sem 3</option>
+                            <option value="4">Sem 4</option>
+                            <option value="5">Sem 5</option>
+                            <option value="6" selected>Sem 6</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newStudCgpa">Starting CGPA</label>
+                        <input type="number" step="0.01" id="newStudCgpa" class="form-input" value="8.20">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newStudPhone">Phone Number</label>
+                        <input type="tel" id="newStudPhone" class="form-input" placeholder="9123456789">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="newStudPassword">Password</label>
+                    <input type="password" id="newStudPassword" class="form-input" value="Password@123">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Create Student Account</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Modal Dialog: Add Faculty -->
+    <dialog id="addFacultyModal" class="modal-dialog">
+        <div class="modal-header">
+            <h3>Add Faculty Member</h3>
+            <button class="btn btn-sm btn-secondary" id="closeAddFacultyModalBtn">✕</button>
+        </div>
+        <form id="addFacultyForm" method="dialog">
+            <div class="modal-body">
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newFacName">Faculty Name *</label>
+                        <input type="text" id="newFacName" class="form-input" placeholder="e.g. Dr. Anita Deshmukh" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newFacEmpId">Employee ID *</label>
+                        <input type="text" id="newFacEmpId" class="form-input" placeholder="e.g. FAC-CS-105" required>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newFacUsername">Username *</label>
+                        <input type="text" id="newFacUsername" class="form-input" placeholder="dr_anita2" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newFacEmail">Email *</label>
+                        <input type="email" id="newFacEmail" class="form-input" placeholder="anita@smartcampus.edu" required>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="newFacDept">Department</label>
+                        <select id="newFacDept" class="form-select">
+                            <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                            <option value="Information Technology">Information Technology</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newFacDesig">Designation</label>
+                        <select id="newFacDesig" class="form-select">
+                            <option value="Assistant Professor">Assistant Professor</option>
+                            <option value="Associate Professor">Associate Professor</option>
+                            <option value="Professor & HOD">Professor & HOD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="newFacPhone">Phone Number</label>
+                    <input type="tel" id="newFacPhone" class="form-input" placeholder="9876543210">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Create Faculty Account</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

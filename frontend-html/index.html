@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Campus Connect - College Management Portal</title>
+    <!-- Stylesheets demonstrating CSS3 Modular Architecture -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <!-- Semantic HTML5 Header & Navigation -->
+    <header class="public-header">
+        <div class="container public-nav">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-icon">🎓</span>
+                <span>Smart Campus Connect</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="events.html">Campus Events</a></li>
+                    <li><a href="feedback.html">Student Feedback</a></li>
+                    <li><a href="xml-exchange.html">XML Data Exchange</a></li>
+                    <li><a href="login.html" class="btn btn-primary" style="color: #fff; padding: 0.4rem 1rem;">Portal Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Semantic HTML5 Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #fff; padding: 5rem 0; text-align: center;">
+            <div class="container animate-fade-in">
+                <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff; margin-bottom: 1.25rem; font-size: 0.85rem; padding: 0.35rem 1rem;">
+                    🚀 Academic Full-Stack Web Programming Project
+                </span>
+                <h1 style="color: #fff; font-size: 3rem; margin-bottom: 1rem; max-width: 850px; margin-inline: auto;">
+                    Unified Digital Governance for Students, Faculty & Administration
+                </h1>
+                <p style="color: #e0e7ff; font-size: 1.2rem; max-width: 700px; margin-inline: auto; margin-bottom: 2rem;">
+                    Streamline attendance tracking, assignment evaluation, event registration, and academic grievance resolution with a single modern portal.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="login.html" class="btn btn-light" style="background: #fff; color: #1e3a8a; font-weight: 700; padding: 0.8rem 1.8rem;">
+                        Enter Campus Portal
+                    </a>
+                    <a href="register.html" class="btn" style="background: transparent; color: #fff; border: 2px solid #fff; padding: 0.8rem 1.8rem;">
+                        Student Admission Registration
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Syllabus Coverage Overview -->
+        <section style="padding: 4rem 0;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2>Demonstrating All 5 Syllabus Units</h2>
+                    <p class="text-muted">Built according to the university web programming laboratory curriculum.</p>
+                </div>
+
+                <div class="grid-4">
+                    <article class="card interactive-hover">
+                        <div class="stat-icon blue" style="margin-bottom: 1rem;">🌐</div>
+                        <h3>Unit 1 & 2: HTML5 & CSS3</h3>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                            Semantic elements, responsive layout grid, Flexbox, custom CSS properties, smooth transitions, and accessibility compliance.
+                        </p>
+                    </article>
+
+                    <article class="card interactive-hover">
+                        <div class="stat-icon green" style="margin-bottom: 1rem;">⚡</div>
+                        <h3>Unit 3: Client JavaScript</h3>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                            Real-time regex form verification, DOM events, dynamic attendance calculations, modals, and async fetch communication.
+                        </p>
+                    </article>
+
+                    <article class="card interactive-hover">
+                        <div class="stat-icon purple" style="margin-bottom: 1rem;">🐘</div>
+                        <h3>Unit 4: Server-Side PHP</h3>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                            Session handling, BCrypt password hashing, and PDO Prepared Statements against MySQL to prevent SQL injection.
+                        </p>
+                    </article>
+
+                    <article class="card interactive-hover">
+                        <div class="stat-icon yellow" style="margin-bottom: 1rem;">📄</div>
+                        <h3>Unit 5: XML & Java Servlets</h3>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                            XML Schema (XSD), DTD, DOM/SimpleXML parsers, plus Java Servlets with JDBC integration for academic reporting.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Role Portals Section -->
+        <section style="background: var(--surface); padding: 4rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2>Role-Based Dashboards</h2>
+                    <p class="text-muted">Separate, specialized portals designed for each campus stakeholder.</p>
+                </div>
+
+                <div class="grid-4" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="card" style="border-top: 4px solid var(--primary);">
+                        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">👨‍🎓</div>
+                        <h3>Student Dashboard</h3>
+                        <ul style="margin: 1rem 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li>Real-time attendance percentage & gauge</li>
+                            <li>Assignment submission & feedback grades</li>
+                            <li>Campus event discovery & 1-click registration</li>
+                            <li>Official circulars and announcements</li>
+                        </ul>
+                        <a href="student-dashboard.html" class="btn btn-block btn-secondary">Open Student Portal</a>
+                    </div>
+
+                    <div class="card" style="border-top: 4px solid var(--success);">
+                        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">👩‍🏫</div>
+                        <h3>Faculty Dashboard</h3>
+                        <ul style="margin: 1rem 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li>Interactive class roster attendance marker</li>
+                            <li>Batch save attendance records to MySQL</li>
+                            <li>Assignment creation with deadline manager</li>
+                            <li>Review submissions and assign student grades</li>
+                        </ul>
+                        <a href="faculty-dashboard.html" class="btn btn-block btn-secondary">Open Faculty Portal</a>
+                    </div>
+
+                    <div class="card" style="border-top: 4px solid var(--warning);">
+                        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🏛️</div>
+                        <h3>Admin Dashboard</h3>
+                        <ul style="margin: 1rem 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            <li>Full CRUD for student & faculty records</li>
+                            <li>Campus-wide circular broadcaster</li>
+                            <li>Event organization & participant limits</li>
+                            <li>Student grievance review & resolution</li>
+                        </ul>
+                        <a href="admin-dashboard.html" class="btn btn-block btn-secondary">Open Admin Portal</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Semantic HTML5 Footer -->
+    <footer style="background: #0f172a; color: #94a3b8; padding: 3rem 0; font-size: 0.9rem;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <strong style="color: #fff; font-size: 1.1rem;">Smart Campus Connect</strong>
+                <p style="margin-top: 0.25rem; color: #64748b;">Academic Web Programming Full-Stack Project</p>
+            </div>
+            <div>
+                <p>Designed with HTML5, CSS3, JavaScript, PHP, XML, Java Servlets, JDBC, MySQL & React JS.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

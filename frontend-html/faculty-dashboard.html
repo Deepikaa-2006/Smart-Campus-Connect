@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - Smart Campus Connect</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo" style="font-size: 1.15rem;">
+                    <span>🎓</span>
+                    <span>Smart Campus</span>
+                </a>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="faculty-dashboard.html"><span class="icon">👩‍🏫</span> Faculty Portal</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="events.html"><span class="icon">🎪</span> College Events</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="xml-exchange.html"><span class="icon">📄</span> XML Academic Export</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="login.html"><span class="icon">🔄</span> Switch Account</a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="user-avatar js-user-initials" style="background: var(--success-light); color: var(--success);">PS</div>
+                    <div class="user-info">
+                        <div class="name js-user-name">Prof. Rajesh Sharma</div>
+                        <div class="role js-user-role">FACULTY</div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-secondary btn-block js-logout-btn">Log Out</button>
+            </div>
+        </aside>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+                    <h2>Faculty Management Portal</h2>
+                </div>
+                <div>
+                    <span class="badge badge-info">CSE Department &bull; Employee ID: FAC-CS-101</span>
+                </div>
+            </header>
+
+            <main class="content-body">
+                
+                <!-- Attendance Management Section -->
+                <section class="card animate-fade-in" style="margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <div>
+                            <span class="badge badge-success" style="margin-bottom: 0.25rem;">Unit 3 & 4: Attendance Management</span>
+                            <h3 class="card-title">Record Class Attendance</h3>
+                        </div>
+                        <button class="btn btn-sm btn-secondary" id="markAllPresentBtn">
+                            ✓ Mark All Present
+                        </button>
+                    </div>
+
+                    <!-- Filter Controls -->
+                    <div class="grid-4" style="margin-bottom: 1.5rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Department</label>
+                            <select id="attDeptSelect" class="form-select">
+                                <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                                <option value="Information Technology">Information Technology</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Semester</label>
+                            <select id="attSemSelect" class="form-select">
+                                <option value="6" selected>Semester 6</option>
+                                <option value="4">Semester 4</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Subject / Course Name *</label>
+                            <input type="text" id="attSubjectInput" class="form-input" value="Web Programming">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Attendance Date *</label>
+                            <input type="date" id="attDateInput" class="form-input">
+                        </div>
+                    </div>
+
+                    <!-- Attendance Roster Table -->
+                    <div class="table-container" style="margin-bottom: 1.5rem;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60px;">#</th>
+                                    <th>Roll Number</th>
+                                    <th>Student Name</th>
+                                    <th>Status (Present / Absent / Late)</th>
+                                    <th>Remarks / Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendanceRosterTableBody">
+                                <!-- Populated dynamically by faculty.js -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end;">
+                        <button class="btn btn-success" id="saveAttendanceBtn" style="padding: 0.65rem 1.8rem;">
+                            💾 Save Attendance to Database
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Assignment Management Section -->
+                <section class="card animate-fade-in">
+                    <div class="card-header">
+                        <div>
+                            <span class="badge badge-warning" style="margin-bottom: 0.25rem;">Unit 4: Assignments & Submissions</span>
+                            <h3 class="card-title">Manage Course Assignments</h3>
+                        </div>
+                        <button class="btn btn-primary" id="openCreateAssignmentBtn">
+                            + Create New Assignment
+                        </button>
+                    </div>
+
+                    <!-- List of Assignments -->
+                    <div id="facultyAssignmentsContainer">
+                        <!-- Populated dynamically by faculty.js -->
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Dialog: Create Assignment -->
+    <dialog id="createAssignmentModal" class="modal-dialog">
+        <div class="modal-header">
+            <h3>Create Course Assignment</h3>
+            <button class="btn btn-sm btn-secondary" id="closeCreateAssignModalBtn">✕</button>
+        </div>
+        <form id="createAssignmentForm" method="dialog">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="assignSubject">Subject *</label>
+                    <input type="text" id="assignSubject" class="form-input" value="Web Programming" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="assignTitle">Assignment Title *</label>
+                    <input type="text" id="assignTitle" class="form-input" placeholder="e.g. Unit 3 JavaScript Form Validation Project" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="assignDescription">Instructions & Requirements *</label>
+                    <textarea id="assignDescription" class="form-textarea" rows="3" placeholder="Specify instructions, deliverable requirements, and rubric..." required></textarea>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="assignDueDate">Due Date *</label>
+                        <input type="date" id="assignDueDate" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="assignMaxMarks">Maximum Marks *</label>
+                        <input type="number" id="assignMaxMarks" class="form-input" value="100" min="10" max="100" required>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Publish Assignment</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Modal Dialog: Submissions Viewer -->
+    <dialog id="submissionsViewerModal" class="modal-dialog" style="max-width: 800px;">
+        <div class="modal-header">
+            <div>
+                <h3 id="modalSubmissionsTitle">Assignment Submissions</h3>
+                <span class="badge badge-info">Student Work Review</span>
+            </div>
+            <button class="btn btn-sm btn-secondary" onclick="document.getElementById('submissionsViewerModal').close()">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Roll Number</th>
+                            <th>Student Name</th>
+                            <th>Submission Text / Link</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="submissionsTableBody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Modal Dialog: Grade Submission -->
+    <dialog id="gradingModal" class="modal-dialog">
+        <div class="modal-header">
+            <h3>Grade Student Submission</h3>
+            <button class="btn btn-sm btn-secondary" id="closeGradingModalBtn">✕</button>
+        </div>
+        <form id="gradingForm" method="dialog">
+            <div class="modal-body">
+                <input type="hidden" id="modalGradingSubId">
+                <input type="hidden" id="modalGradingAssignId">
+                
+                <div class="form-group">
+                    <label class="form-label">Student</label>
+                    <div id="modalGradingStudentName" style="font-weight: 600; font-size: 1.1rem;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="modalGradingMarks">Marks Obtained (Out of 100) *</label>
+                    <input type="number" id="modalGradingMarks" class="form-input" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="modalGradingRemarks">Feedback Remarks</label>
+                    <textarea id="modalGradingRemarks" class="form-textarea" rows="3" placeholder="Provide constructive comments for student improvements..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Save Grade & Feedback</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/faculty.js"></script>
+    <script>
+        // Set today's date in attendance field
+        document.getElementById('attDateInput').value = new Date().toISOString().substring(0, 10);
+        const nextWeek = new Date();
+        nextWeek.setDate(nextWeek.getDate() + 14);
+        document.getElementById('assignDueDate').value = nextWeek.toISOString().substring(0, 10);
+    </script>
+</body>
+</html>

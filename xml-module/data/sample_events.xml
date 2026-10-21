@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CampusEvents SYSTEM "../schema/events.dtd">
+<CampusEvents>
+    <CollegeName>Smart Campus Institute of Technology</CollegeName>
+    <AcademicYear>2026-2027</AcademicYear>
+    <EventList>
+        <Event id="1" status="Upcoming">
+            <Title>Smart Campus Hackathon 2026</Title>
+            <Category>Technical</Category>
+            <EventDate>2026-10-28 09:00:00</EventDate>
+            <Location>Central Computing Center Block A</Location>
+            <Description>24-hour inter-departmental coding hackathon focusing on Campus Innovation, AI, and Sustainability.</Description>
+            <MaxCapacity>120</MaxCapacity>
+        </Event>
+        <Event id="2" status="Upcoming">
+            <Title>Cloud Native Architecture Workshop</Title>
+            <Category>Technical</Category>
+            <EventDate>2026-11-02 14:00:00</EventDate>
+            <Location>Seminar Hall 3</Location>
+            <Description>Hands-on session with industry experts on Docker, Kubernetes, and Serverless architectures.</Description>
+            <MaxCapacity>80</MaxCapacity>
+        </Event>
+        <Event id="3" status="Upcoming">
+            <Title>Tarang 2026 - Annual Cultural Fest</Title>
+            <Category>Cultural</Category>
+            <EventDate>2026-11-15 17:00:00</EventDate>
+            <Location>College Main Amphitheater</Location>
+            <Description>Annual cultural festival with musical nights, dance battles, dramatics, and celebrity performances.</Description>
+            <MaxCapacity>500</MaxCapacity>
+        </Event>
+    </EventList>
+</CampusEvents>

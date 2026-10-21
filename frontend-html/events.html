@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Events - Smart Campus Connect</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- Public Header -->
+    <header class="public-header">
+        <div class="container public-nav">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-icon">🎓</span>
+                <span>Smart Campus Connect</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                    <li><a href="xml-exchange.html">XML Exchange</a></li>
+                    <li><a href="login.html" class="btn btn-primary" style="color: #fff; padding: 0.4rem 1rem;">Portal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="flex: 1; padding: 3rem 0;">
+        <div class="container">
+            
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                <div>
+                    <span class="badge badge-info" style="margin-bottom: 0.5rem;">Unit 3 & 4: Interactive Events Module</span>
+                    <h1>College Events & Workshops</h1>
+                    <p class="text-muted">Discover extracurricular activities, hackathons, seminars, and sports fests.</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" id="openAddEventModalBtn" style="display: none;">
+                        + Publish New Event
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter & Search Toolbar -->
+            <div class="card" style="margin-bottom: 2rem; padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <!-- Filter Pills -->
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <button class="btn btn-sm btn-primary event-filter-btn" data-category="All">All Events</button>
+                        <button class="btn btn-sm btn-secondary event-filter-btn" data-category="Technical">💻 Technical</button>
+                        <button class="btn btn-sm btn-secondary event-filter-btn" data-category="Cultural">🎭 Cultural</button>
+                        <button class="btn btn-sm btn-secondary event-filter-btn" data-category="Sports">⚽ Sports</button>
+                    </div>
+
+                    <!-- Search Box -->
+                    <div style="min-width: 280px;">
+                        <input type="text" id="eventSearchInput" class="form-input" placeholder="🔍 Search events by keyword...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Events Grid -->
+            <div class="grid-4" id="eventsCatalogGrid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                <!-- Populated dynamically by events.js -->
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Dialog: Create Event -->
+    <dialog id="addEventModal" class="modal-dialog">
+        <div class="modal-header">
+            <h3>Publish New College Event</h3>
+            <button class="btn btn-sm btn-secondary" id="closeAddEventModalBtn">✕</button>
+        </div>
+        <form id="addEventForm" method="dialog">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="eventTitle">Event Title *</label>
+                    <input type="text" id="eventTitle" class="form-input" placeholder="e.g. Smart Campus Hackathon 2026" required>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="eventCategory">Category</label>
+                        <select id="eventCategory" class="form-select">
+                            <option value="Technical">Technical</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Workshop">Workshop</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="eventDate">Date & Time *</label>
+                        <input type="datetime-local" id="eventDate" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="eventLocation">Location / Venue *</label>
+                        <input type="text" id="eventLocation" class="form-input" placeholder="e.g. Computing Lab Block A" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="eventCapacity">Max Participant Capacity</label>
+                        <input type="number" id="eventCapacity" class="form-input" value="100" min="10">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="eventDescription">Description *</label>
+                    <textarea id="eventDescription" class="form-textarea" rows="3" placeholder="Provide event schedule, rules, and eligibility details..." required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Create Event</button>
+            </div>
+        </form>
+    </dialog>
+
+    <footer style="background: #0f172a; color: #94a3b8; padding: 2rem 0; font-size: 0.85rem; margin-top: auto;">
+        <div class="container text-center">
+            <p>Smart Campus Connect &bull; Web Programming Course Project</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/events.js"></script>
+    <script>
+        // Set default datetime to tomorrow 10:00 AM
+        const d = new Date();
+        d.setDate(d.getDate() + 7);
+        d.setHours(10, 0, 0, 0);
+        document.getElementById('eventDate').value = d.toISOString().slice(0, 16);
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Smart Campus Connect - XML Schema Definition (XSD)
+    Syllabus: Unit 5 (XML Schema, Complex Types & Restrictions)
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://smartcampus.edu/report"
+           xmlns="http://smartcampus.edu/report"
+           elementFormDefault="qualified">
+
+    <!-- Root Element -->
+    <xs:element name="CampusAcademicReport">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Institution" type="xs:string"/>
+                <xs:element name="GeneratedDate" type="xs:dateTime"/>
+                <xs:element name="Students">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Student" type="StudentType" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Complex Type: Student -->
+    <xs:complexType name="StudentType">
+        <xs:sequence>
+            <xs:element name="RollNumber" type="xs:string"/>
+            <xs:element name="FullName" type="xs:string"/>
+            <xs:element name="Department" type="xs:string"/>
+            <xs:element name="Semester" type="xs:integer"/>
+            <xs:element name="CGPA">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0.0"/>
+                        <xs:maxInclusive value="10.0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AttendanceSummary" type="AttendanceSummaryType"/>
+            <xs:element name="Courses" type="CoursesType"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+
+    <!-- Complex Type: Attendance Summary -->
+    <xs:complexType name="AttendanceSummaryType">
+        <xs:sequence>
+            <xs:element name="TotalClasses" type="xs:integer"/>
+            <xs:element name="AttendedClasses" type="xs:integer"/>
+            <xs:element name="Percentage" type="xs:decimal"/>
+            <xs:element name="EligibilityStatus">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Eligible"/>
+                        <xs:enumeration value="Warning"/>
+                        <xs:enumeration value="Critical Shortage"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Complex Type: Courses List -->
+    <xs:complexType name="CoursesType">
+        <xs:sequence>
+            <xs:element name="Course" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Code" type="xs:string"/>
+                        <xs:element name="Title" type="xs:string"/>
+                        <xs:element name="AttendanceRate" type="xs:decimal"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CampusAcademicReport xmlns="http://smartcampus.edu/report"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://smartcampus.edu/report ../schema/campus_report.xsd"
+                      version="1.0">
+    <Institution>Smart Campus Institute of Engineering &amp; Technology</Institution>
+    <GeneratedDate>2026-10-10T11:30:00</GeneratedDate>
+    <Students>
+        <Student id="1">
+            <RollNumber>CS2023-001</RollNumber>
+            <FullName>Rahul Verma</FullName>
+            <Department>Computer Science &amp; Engineering</Department>
+            <Semester>6</Semester>
+            <CGPA>8.85</CGPA>
+            <AttendanceSummary>
+                <TotalClasses>24</TotalClasses>
+                <AttendedClasses>21</AttendedClasses>
+                <Percentage>87.5</Percentage>
+                <EligibilityStatus>Eligible</EligibilityStatus>
+            </AttendanceSummary>
+            <Courses>
+                <Course>
+                    <Code>CS601</Code>
+                    <Title>Web Programming</Title>
+                    <AttendanceRate>91.7</AttendanceRate>
+                </Course>
+                <Course>
+                    <Code>CS602</Code>
+                    <Title>Database Management Systems</Title>
+                    <AttendanceRate>83.3</AttendanceRate>
+                </Course>
+            </Courses>
+        </Student>
+        <Student id="2">
+            <RollNumber>CS2023-002</RollNumber>
+            <FullName>Priya Sharma</FullName>
+            <Department>Computer Science &amp; Engineering</Department>
+            <Semester>6</Semester>
+            <CGPA>9.15</CGPA>
+            <AttendanceSummary>
+                <TotalClasses>24</TotalClasses>
+                <AttendedClasses>24</AttendedClasses>
+                <Percentage>100.0</Percentage>
+                <EligibilityStatus>Eligible</EligibilityStatus>
+            </AttendanceSummary>
+            <Courses>
+                <Course>
+                    <Code>CS601</Code>
+                    <Title>Web Programming</Title>
+                    <AttendanceRate>100.0</AttendanceRate>
+                </Course>
+            </Courses>
+        </Student>
+    </Students>
+</CampusAcademicReport>

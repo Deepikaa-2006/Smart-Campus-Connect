@@ -1,0 +1,31 @@
+# Node.js dependencies and builds
+
+node_modules/
+frontend-react/node_modules/
+frontend-react/dist/
+
+# Environment files and secrets
+
+.env
+.env.*
+!.env.example
+
+# Java compiled files
+
+backend-java/bin/
+*.class
+
+# Python cache and virtual environments
+
+**pycache**/
+.venv/
+venv/
+
+# IDE settings
+
+.vscode/
+.idea/
+
+# Log files
+
+*.log

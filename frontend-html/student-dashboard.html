@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Smart Campus Connect</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo" style="font-size: 1.15rem;">
+                    <span>🎓</span>
+                    <span>Smart Campus</span>
+                </a>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="student-dashboard.html"><span class="icon">📊</span> Dashboard</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="events.html"><span class="icon">🎪</span> College Events</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="feedback.html"><span class="icon">💬</span> Feedback & Grievance</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="xml-exchange.html"><span class="icon">📄</span> XML Academic Export</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="login.html"><span class="icon">🔄</span> Switch Account</a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-snippet">
+                    <div class="user-avatar js-user-initials">RV</div>
+                    <div class="user-info">
+                        <div class="name js-user-name">Rahul Verma</div>
+                        <div class="role js-user-role">STUDENT</div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-secondary btn-block js-logout-btn">Log Out</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+                    <h2>Student Academic Portal</h2>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="badge badge-success">Semester 6 (Active)</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Content Body -->
+            <main class="content-body">
+                
+                <!-- Student Profile Card -->
+                <div class="card animate-fade-in" style="margin-bottom: 2rem; background: linear-gradient(to right, #ffffff, #f0fdf4); border-left: 5px solid var(--primary);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <span class="badge badge-info" id="studentRoll">CS2023-001</span>
+                            <h2 id="studentName" style="margin-top: 0.25rem;">Rahul Verma</h2>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">
+                                Department of <span id="studentDept">Computer Science & Engineering</span> &nbsp;|&nbsp; <span id="studentSem">Semester 6</span>
+                            </p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.15rem;">
+                                📧 <span id="studentEmail">rahul.verma@smartcampus.edu</span> &nbsp;|&nbsp; 📱 <span id="studentPhone">9123456780</span>
+                            </p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Cumulative GPA</div>
+                            <div id="studentCgpa" style="font-size: 2.2rem; font-weight: 800; color: var(--primary);">8.85</div>
+                            <span class="badge badge-success">First Class with Distinction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metrics & Attendance Overview -->
+                <div class="grid-4">
+                    <!-- Attendance Metric Card -->
+                    <div class="stat-card">
+                        <div class="stat-icon green">📈</div>
+                        <div class="stat-details" style="flex: 1;">
+                            <div class="value" id="attendancePct">87.5%</div>
+                            <div class="label">Overall Attendance</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill safe" id="attendanceProgressFill" style="width: 87.5%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Classes Attended Card -->
+                    <div class="stat-card">
+                        <div class="stat-icon blue">🏫</div>
+                        <div class="stat-details">
+                            <div class="value" id="attendedCount">21 / 24</div>
+                            <div class="label">Lectures Attended</div>
+                        </div>
+                    </div>
+
+                    <!-- Examination Eligibility Status -->
+                    <div class="stat-card">
+                        <div class="stat-icon yellow">🎯</div>
+                        <div class="stat-details">
+                            <div style="margin-bottom: 0.35rem;">
+                                <span class="badge badge-success" id="attendanceStatusBadge">Eligible for Finals</span>
+                            </div>
+                            <div class="label">Exam Criteria: Min 75% required</div>
+                        </div>
+                    </div>
+
+                    <!-- Assignments Counter -->
+                    <div class="stat-card">
+                        <div class="stat-icon purple">📝</div>
+                        <div class="stat-details">
+                            <div class="value">2 Active</div>
+                            <div class="label">Lab Assignments</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject-Wise Attendance Breakdown Table -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">Subject-Wise Attendance Breakdown</h3>
+                        <span class="badge badge-info">Unit 1: Semantic Table & Unit 3: JS Gauge</span>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject / Course</th>
+                                    <th>Total Lectures</th>
+                                    <th>Attended</th>
+                                    <th>Percentage</th>
+                                    <th>Eligibility</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjectAttendanceTableBody">
+                                <!-- Populated dynamically by student.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout: Assignments & Announcements -->
+                <div class="grid-3-1">
+                    
+                    <!-- Assignments Column -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Course Assignments & Deadlines</h3>
+                            <span class="badge badge-warning">Unit 4: Server Processing</span>
+                        </div>
+                        <div id="studentAssignmentsList">
+                            <!-- Populated dynamically by student.js -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Announcements & Events -->
+                    <div>
+                        <!-- Announcements -->
+                        <div class="card" style="margin-bottom: 1.5rem;">
+                            <div class="card-header">
+                                <h3 class="card-title">Campus Circulars</h3>
+                                <span class="badge badge-info">Notices</span>
+                            </div>
+                            <div id="studentAnnouncementsList">
+                                <!-- Populated dynamically by student.js -->
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Events -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Upcoming Events</h3>
+                                <a href="events.html" class="btn btn-sm btn-secondary">View All</a>
+                            </div>
+                            <div id="studentEventsList">
+                                <!-- Populated dynamically by student.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- HTML5 Native Modal Dialog for Assignment Submission -->
+    <dialog id="submissionModal" class="modal-dialog">
+        <div class="modal-header">
+            <h3>Submit Assignment Work</h3>
+            <button class="btn btn-sm btn-secondary" id="closeSubmissionModalBtn">✕</button>
+        </div>
+        <form id="submissionForm" method="dialog">
+            <div class="modal-body">
+                <input type="hidden" id="modalAssignmentId">
+                <div class="form-group">
+                    <label class="form-label">Assignment Title</label>
+                    <div id="modalAssignmentTitle" style="font-weight: 600; color: var(--text-primary);"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="modalSubmissionText">Project Link / Submission Summary *</label>
+                    <textarea id="modalSubmissionText" class="form-textarea" rows="4" placeholder="Provide GitHub repository URL, cloud drive link, or solution summary..." required></textarea>
+                    <div class="form-hint">Ensure links have public viewing permissions.</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Confirm Submission</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

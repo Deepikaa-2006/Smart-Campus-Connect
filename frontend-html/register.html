@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Smart Campus Connect</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- Public Header -->
+    <header class="public-header">
+        <div class="container public-nav">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-icon">🎓</span>
+                <span>Smart Campus Connect</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Registration Section -->
+    <main style="flex: 1; padding: 3rem 1rem; display: flex; align-items: center; justify-content: center;">
+        <div class="card animate-fade-in" style="width: 100%; max-width: 650px; padding: 2.5rem;">
+            
+            <div style="margin-bottom: 2rem;">
+                <span class="badge badge-info" style="margin-bottom: 0.5rem;">Unit 1 & 3: HTML5 Form & JS Regex Validation</span>
+                <h2>New Student Registration</h2>
+                <p class="text-muted" style="font-size: 0.9rem;">Enroll into the campus digital portal with your academic credentials.</p>
+            </div>
+
+            <!-- Dynamic Alert Box -->
+            <div id="registerAlert" style="display: none;"></div>
+
+            <!-- Semantic HTML5 Form with modern field types -->
+            <form id="registerForm" novalidate>
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="regFullName">Full Name *</label>
+                        <input type="text" id="regFullName" class="form-input" placeholder="e.g. Rahul Verma" required>
+                        <div class="form-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regRollNumber">University Roll Number *</label>
+                        <input type="text" id="regRollNumber" class="form-input" placeholder="e.g. CS2023-005" required>
+                        <div class="form-hint">Format: DeptYear-Number (e.g., CS2023-005)</div>
+                        <div class="form-error"></div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="regUsername">Username *</label>
+                        <input type="text" id="regUsername" class="form-input" placeholder="e.g. rahul_v2" required autocomplete="username">
+                        <div class="form-hint">Alphanumeric & underscore only (min 3 chars)</div>
+                        <div class="form-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regEmail">College Email Address *</label>
+                        <input type="email" id="regEmail" class="form-input" placeholder="rahul@smartcampus.edu" required autocomplete="email">
+                        <div class="form-error"></div>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="regDepartment">Academic Department *</label>
+                        <select id="regDepartment" class="form-select" required>
+                            <option value="Computer Science & Engineering">Computer Science & Engineering</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Electronics & Communication">Electronics & Communication</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regSemester">Current Semester *</label>
+                        <select id="regSemester" class="form-select" required>
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="3">Semester 3</option>
+                            <option value="4">Semester 4</option>
+                            <option value="5">Semester 5</option>
+                            <option value="6" selected>Semester 6</option>
+                            <option value="7">Semester 7</option>
+                            <option value="8">Semester 8</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-bottom: 0;">
+                    <div class="form-group">
+                        <label class="form-label" for="regPassword">Account Password *</label>
+                        <input type="password" id="regPassword" class="form-input" placeholder="Min 6 characters with numbers" required autocomplete="new-password">
+                        <div class="form-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPhone">Mobile Number</label>
+                        <input type="tel" id="regPhone" class="form-input" placeholder="e.g. 9123456789">
+                        <div class="form-error"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="padding: 0.8rem; font-size: 1rem; margin-top: 1rem;">
+                    Complete Student Registration
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem;">
+                <span class="text-muted">Already registered with an existing account?</span>
+                <a href="login.html" style="font-weight: 600; margin-left: 0.25rem;">Sign In</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

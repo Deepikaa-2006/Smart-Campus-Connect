@@ -1,0 +1,18 @@
+<!--
+    Smart Campus Connect - Document Type Definition (DTD)
+    Syllabus: Unit 5 (XML DTD Declarations & Entities)
+-->
+<!ELEMENT CampusEvents (CollegeName, AcademicYear, EventList)>
+<!ELEMENT CollegeName (#PCDATA)>
+<!ELEMENT AcademicYear (#PCDATA)>
+<!ELEMENT EventList (Event+)>
+<!ELEMENT Event (Title, Category, EventDate, Location, Description, MaxCapacity)>
+<!ATTLIST Event 
+    id CDATA #REQUIRED
+    status (Upcoming | Completed | Cancelled) "Upcoming">
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT Category (#PCDATA)>
+<!ELEMENT EventDate (#PCDATA)>
+<!ELEMENT Location (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT MaxCapacity (#PCDATA)>

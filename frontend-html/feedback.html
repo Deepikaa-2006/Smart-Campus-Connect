@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback - Smart Campus Connect</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .star-rating-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .star-rating-icon {
+            font-size: 2rem;
+            color: #f59e0b;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+            user-select: none;
+        }
+        .star-rating-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- Public Header -->
+    <header class="public-header">
+        <div class="container public-nav">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-icon">🎓</span>
+                <span>Smart Campus Connect</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="feedback.html" class="active">Feedback</a></li>
+                    <li><a href="xml-exchange.html">XML Exchange</a></li>
+                    <li><a href="login.html" class="btn btn-primary" style="color: #fff; padding: 0.4rem 1rem;">Portal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="flex: 1; padding: 3rem 0;">
+        <div class="container">
+            
+            <div style="margin-bottom: 2.5rem;">
+                <span class="badge badge-info" style="margin-bottom: 0.5rem;">Unit 3 & 4: Grievance Resolution & Feedback</span>
+                <h1>Student Feedback & Grievance Portal</h1>
+                <p class="text-muted">Share your campus experience or report academic and infrastructural issues directly to administration.</p>
+            </div>
+
+            <div class="grid-2">
+                
+                <!-- Feedback Submission Form -->
+                <div class="card animate-fade-in">
+                    <div class="card-header">
+                        <h3 class="card-title">Submit New Feedback</h3>
+                        <span class="badge badge-primary">Direct to Principal</span>
+                    </div>
+
+                    <form id="studentFeedbackForm">
+                        <div class="form-group">
+                            <label class="form-label" for="fbCategory">Grievance / Feedback Category *</label>
+                            <select id="fbCategory" class="form-select" required>
+                                <option value="Academics">Academics & Faculty</option>
+                                <option value="Infrastructure" selected>Campus Infrastructure & Labs</option>
+                                <option value="Library">Library & Study Rooms</option>
+                                <option value="Canteen">Cafeteria & Food Services</option>
+                                <option value="Hostel">Hostel & Accommodation</option>
+                                <option value="General">General Campus Governance</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Satisfaction Rating *</label>
+                            <div class="star-rating-container">
+                                <span class="star-rating-icon" data-value="1">★</span>
+                                <span class="star-rating-icon" data-value="2">★</span>
+                                <span class="star-rating-icon" data-value="3">★</span>
+                                <span class="star-rating-icon" data-value="4">★</span>
+                                <span class="star-rating-icon" data-value="5">★</span>
+                                <span id="starRatingLabel" style="margin-left: 0.5rem; font-weight: 600; font-size: 0.9rem; color: var(--text-secondary);">
+                                    5/5 - Excellent
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="fbSubject">Subject Summary *</label>
+                            <input type="text" id="fbSubject" class="form-input" placeholder="e.g. Wi-Fi signal drop in Library Block 2" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="fbMessage">Detailed Explanation *</label>
+                            <textarea id="fbMessage" class="form-textarea" rows="4" placeholder="Describe the issue clearly with location, frequency, or recommendations..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" style="padding: 0.75rem;">
+                            Submit Grievance / Suggestion
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Past Feedback History & Admin Resolution -->
+                <div>
+                    <div class="card animate-fade-in">
+                        <div class="card-header">
+                            <h3 class="card-title">My Feedback Status & Resolutions</h3>
+                            <span class="badge badge-success">Live Tracking</span>
+                        </div>
+                        <div id="myFeedbackHistoryContainer">
+                            <!-- Populated dynamically by feedback.js -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="background: #0f172a; color: #94a3b8; padding: 2rem 0; font-size: 0.85rem; margin-top: auto;">
+        <div class="container text-center">
+            <p>Smart Campus Connect &bull; Web Programming Course Project</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>

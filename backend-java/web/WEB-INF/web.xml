@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Smart Campus Connect - Java Servlet Deployment Descriptor
+    Syllabus: Unit 6 (Java Servlets Web Descriptor web.xml)
+-->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Smart Campus Connect Java Backend</display-name>
+    <description>Servlets and JDBC Module for Smart Campus Connect Web Project</description>
+
+    <!-- 1. Student Servlet -->
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>com.smartcampus.servlets.StudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/api/student</url-pattern>
+    </servlet-mapping>
+
+    <!-- 2. Attendance Servlet -->
+    <servlet>
+        <servlet-name>AttendanceServlet</servlet-name>
+        <servlet-class>com.smartcampus.servlets.AttendanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AttendanceServlet</servlet-name>
+        <url-pattern>/api/attendance</url-pattern>
+    </servlet-mapping>
+
+    <!-- 3. Event Servlet -->
+    <servlet>
+        <servlet-name>EventServlet</servlet-name>
+        <servlet-class>com.smartcampus.servlets.EventServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventServlet</servlet-name>
+        <url-pattern>/api/events</url-pattern>
+    </servlet-mapping>
+
+    <!-- 4. Auth Servlet -->
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>com.smartcampus.servlets.AuthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/api/auth</url-pattern>
+    </servlet-mapping>
+
+</web-app>
